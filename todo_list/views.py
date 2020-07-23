@@ -4,5 +4,6 @@ def home(request):
 	return render(request, 'home.html', {})
 
 def about(request):
-	return render(request, 'about.html', {})
+	context = {'greeting' : 'Good Morning!', 'app' : 'To-Do List Application'}
+	return render(request, 'about.html', context)
 
