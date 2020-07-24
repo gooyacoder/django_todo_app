@@ -1,3 +1,6 @@
+{% load static %}
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,6 +10,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}"
 
     <title>{% block title %}{% endblock %}</title>
   </head>
@@ -25,8 +30,10 @@
       </li>
       
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="To-Do Item" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" method="POST">
+      {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" 
+      placeholder="To-Do Item" aria-label="Search" name="item">
       <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Add New Item</button>
     </form>
   </div>

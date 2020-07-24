@@ -4,6 +4,46 @@
 
 {% block content %}
 
-<h1>Home Page!</h1>
+{% if messages %}
+
+	{% for m in messages %}
+
+		<div class="alert alert-warning alert-dismissable" role="alert">
+			<button class="close" data-dismiss="alert">
+				<small><sup>x</sup></small>
+			</button>
+			{{ m }}
+		</div>
+
+	{% endfor %}
+
+{% endif %}
+
+	{% if items %}
+
+	<table class="table table-bordered">
+
+		{% for list_item in items %}
+
+			{% if list_item.completed %}
+
+				<tr class="table-secondary">
+					<td class="striker">{{ list_item.item }} </td>
+					<td><center>{{ list_item.completed }}</center></td>
+					<td><center>Delete</center></td>
+				</tr>
+			{% else %}
+				<tr>
+					<td>{{ list_item.item }} </td>
+					<td><center>{{ list_item.completed }}</center></td>
+					<td><center>Delete</center></td>
+				</tr>
+
+			{% endif %}
+
+		{% endfor %}
+
+	</table>
+	{% endif %}
 
 {% endblock %}
