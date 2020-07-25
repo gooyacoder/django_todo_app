@@ -30,13 +30,13 @@
 				<tr class="table-secondary">
 					<td class="striker">{{ list_item.item }} </td>
 					<td><center>{{ list_item.completed }}</center></td>
-					<td><center>Delete</center></td>
+					<td><center><a href="{% url 'delete' list_item.id %}">Delete</a></center></td>
 				</tr>
 			{% else %}
 				<tr>
 					<td>{{ list_item.item }} </td>
 					<td><center>{{ list_item.completed }}</center></td>
-					<td><center>Delete</center></td>
+					<td><center><a href="{% url 'delete' list_item.id %}">Delete</a></center></td>
 				</tr>
 
 			{% endif %}

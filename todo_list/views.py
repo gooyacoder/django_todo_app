@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import List
 from .forms import ListForm
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 def home(request):
 
@@ -10,7 +11,7 @@ def home(request):
 		if form.is_valid():
 			form.save()
 			items = List.objects.all
-			messages.success(request, ('Item Added Successfully!'))
+			messages.success(request, ('Item is added successfully!'))
 			return render(request, 'home.html', {'items' : items})
 
 	else:
@@ -21,4 +22,11 @@ def home(request):
 def about(request):
 	context = {'greeting' : 'Good Morning!', 'app' : 'To-Do List Application'}
 	return render(request, 'about.html', context)
+
+
+def delete(request, id):
+	item = List.objects.get(pk=id)
+	item.delete()
+	messages.success(request, ('Item is deleted successfully!'))
+	return redirect('home')
 
