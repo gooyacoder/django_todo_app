@@ -29,13 +29,13 @@
 
 				<tr class="table-secondary">
 					<td class="striker">{{ list_item.item }} </td>
-					<td><center>{{ list_item.completed }}</center></td>
+					<td><center><a href="{% url 'uncross' list_item.id %}">Uncross</a></center></td>
 					<td><center><a href="{% url 'delete' list_item.id %}">Delete</a></center></td>
 				</tr>
 			{% else %}
 				<tr>
 					<td>{{ list_item.item }} </td>
-					<td><center>{{ list_item.completed }}</center></td>
+					<td><center><a href="{% url 'cross_off' list_item.id %}">Cross Off</a></center></td>
 					<td><center><a href="{% url 'delete' list_item.id %}">Delete</a></center></td>
 				</tr>
 
