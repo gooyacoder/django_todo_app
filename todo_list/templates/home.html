@@ -28,15 +28,19 @@
 			{% if list_item.completed %}
 
 				<tr class="table-secondary">
-					<td class="striker">{{ list_item.item }} </td>
-					<td><center><a href="{% url 'uncross' list_item.id %}">Uncross</a></center></td>
-					<td><center><a href="{% url 'delete' list_item.id %}">Delete</a></center></td>
+					<td class="striker"><a href="{% url 'edit' list_item.id %}">{{ list_item.item }}</a> </td>
+					<td><center>
+						<button type="button" class="btn btn-primary">
+							<a href="{% url 'uncross' list_item.id %}" class="link_btn_color">Uncross</a></button></center></td>
+					<td><center>
+						<button type="button" class="btn btn-danger">
+							<a href="{% url 'delete' list_item.id %}" class="link_btn_color">Delete</a></button></center></td>
 				</tr>
 			{% else %}
 				<tr>
-					<td>{{ list_item.item }} </td>
-					<td><center><a href="{% url 'cross_off' list_item.id %}">Cross Off</a></center></td>
-					<td><center><a href="{% url 'delete' list_item.id %}">Delete</a></center></td>
+					<td><a href="{% url 'edit' list_item.id %}">{{ list_item.item }}</a></td>
+					<td><center><button type="button" class="btn btn-primary"><a href="{% url 'cross_off' list_item.id %}" class="link_btn_color">Cross Off</a></button></center></td>
+					<td><center><button type="button" class="btn btn-danger"><a href="{% url 'delete' list_item.id %}" class="link_btn_color">Delete</a></button></center></td>
 				</tr>
 
 			{% endif %}
